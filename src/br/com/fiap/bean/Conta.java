@@ -1,7 +1,25 @@
 package br.com.fiap.bean;
 
-public class Conta {
+import java.util.Calendar;
+
+public abstract class Conta  {
     private String nomeTitular;
+    private int numero;
+    private int agencia;
+    private double saldo;
+    private Calendar dataAbertura;
+
+    public Conta(String nomeTitular, int numero, int agencia, double saldo) {
+        this.nomeTitular = nomeTitular;
+        this.numero = numero;
+        this.agencia = agencia;
+        this.saldo = saldo;
+        this.dataAbertura = Calendar.getInstance();
+    }
+
+    public Calendar getDataAbertura() {
+        return dataAbertura;
+    }
 
     public void setNomeTitular(String nomeTitular) {
         this.nomeTitular = nomeTitular;
@@ -19,9 +37,6 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    private int numero;
-    private int agencia;
-
     public String getNomeTitular() {
         return nomeTitular;
     }
@@ -38,39 +53,24 @@ public class Conta {
         return saldo;
     }
 
-    private double saldo;
-
-    public Conta(String nomeTitular, int numero, int agencia, double saldo) {
-        this.nomeTitular = nomeTitular;
-        this.numero = numero;
-        this.agencia = agencia;
-        this.saldo = saldo;
-    }
-
     public void depositar(double deposito) {
         saldo += deposito;
     }
 
-    // Este método realiza um saque de um determinado valor da conta bancária, desde que o saldo seja suficiente.
-    public void sacar(double saque) {
-        // Verifica se o saldo atual da conta é suficiente para o saque solicitado.
+    public void retirar(double saque) {
         if (saldo >= saque) {
-            // Se o saldo for suficiente, o saque é realizado com sucesso.
             System.out.println("Saque efetuado com sucesso: " + saque);
-            // Atualiza o saldo deduzindo o valor do saque.
             saldo -= saque;
         } else {
-            // Se o saldo não for suficiente, exibe uma mensagem de saldo insuficiente.
-            System.out.println("Saldo insuficiente para saque. Saldo atual: " + saldo);
+            System.out.println("Saldo insuficiente para retirada. Saldo atual: " + saldo);
         }
     }
-
 
     public void mostrarDetalhesConta() {
         System.out.println("Nome do Titular: " + nomeTitular);
         System.out.println("Número da Conta: " + numero);
         System.out.println("Agência: " + agencia);
         System.out.println("Saldo: " + saldo);
+        System.out.println("Data de Abertura: " + dataAbertura.getTime());
     }
-
 }

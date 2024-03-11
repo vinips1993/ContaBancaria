@@ -1,22 +1,50 @@
-import br.com.fiap.bean.Conta;
 import br.com.fiap.bean.ContaCorrente;
 import br.com.fiap.bean.ContaPoupanca;
-import br.com.fiap.bean.Titular;
+
+import java.util.Calendar;
 
 public class Main {
     public static void main(String[] args) {
+        Calendar dataAbertura = Calendar.getInstance();
 
-        Conta contaCorrente = new ContaCorrente("Vinicius Pedro De Souza", 790, 789,500.00);
-        Conta contaPoupanca= new ContaPoupanca("Vinicius Pedro de Souza", 791, 789,2000.00);
+        ContaCorrente contaCorrente = new ContaCorrente("Vinicius Pedro de Souza",
+                1234, 789, 1000.0);
+        ContaPoupanca contaPoupanca = new ContaPoupanca("Vinicius Pedro de Souza",
+                5678, 789, 2000.0, dataAbertura);
 
-        //System.out.println("Informações do Titular da Conta: ");
+        ContaCorrente segundaContaCorrente = new ContaCorrente("John Paul Jones",
+                5678, 790, 1500.0);
+        ContaPoupanca segundaContaPoupanca = new ContaPoupanca("John Paul Jones",
+                91011, 791, 3000.0, dataAbertura);
 
-        System.out.println("************************************");
-        System.out.println("Informações da sua Conta Corrente: ");
-        ((ContaCorrente) contaCorrente).mostrarDetalhesContaCorrente();
-        System.out.println("************************************");
-        System.out.println("Informações da sua Conta Poupanca:  ");
-        ((ContaPoupanca) contaPoupanca).mostrarDetalhesContaPoupanca();
+        ContaCorrente terceiraContaCorrente = new ContaCorrente("Gene Simmons",
+                5678, 790, 1500.0);
+        ContaPoupanca terceiraContaPoupanca = new ContaPoupanca("Gene Simmons",
+                91011, 791, 3000.0, dataAbertura);
 
+
+        System.out.println("Detalhes da Conta Corrente:");
+        contaCorrente.mostrarDetalhesConta();
+        System.out.println();
+
+        System.out.println("Detalhes da Conta Poupança:");
+        contaPoupanca.mostrarDetalhesConta();
+        System.out.println();
+
+        System.out.println("Detalhes da Segunda Conta Corrente:");
+        segundaContaCorrente.mostrarDetalhesConta();
+        System.out.println();
+
+        System.out.println("Detalhes da Segunda Conta Poupança:");
+        segundaContaPoupanca.mostrarDetalhesConta();
+        System.out.println();
+
+        System.out.println("Detalhes da Terceira Conta Corrente:");
+        terceiraContaCorrente.mostrarDetalhesConta();
+        System.out.println();
+
+        System.out.println("Detalhes da Terceira Conta Poupança:");
+        terceiraContaPoupanca.mostrarDetalhesConta();
+        System.out.println();
     }
 }
